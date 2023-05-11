@@ -13,3 +13,20 @@
   border: 1px solid black;
   box-sizing: border-box;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#new-grid {
+  font-size: 1.2em;
+  padding: 10px;
+  border: none;
+  background-color: #4285f4;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
