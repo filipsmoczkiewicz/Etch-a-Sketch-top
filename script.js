@@ -34,6 +34,7 @@ function createGrid(numSquares) {
       // add event listener to change color on mouseover
       square.addEventListener("mouseover", () => {
         if (isLeftMouseButtonPressed) {
+          const currentColor = square.style.backgroundColor; // Add this line
           if (colorMode === "black") {
             square.style.backgroundColor = "black";
           } else if (colorMode === "rainbow") {
@@ -49,6 +50,7 @@ function createGrid(numSquares) {
           }
         }
       });
+      
     }
   }
 }
@@ -71,11 +73,15 @@ newGridButton.addEventListener("click", () => {
 });
 
 // event listeners for left mouse button press and release
-document.addEventListener("mousedown", (event) => {
+container.addEventListener("mousedown", (event) => {
   if (event.button === 0) {
     // Check if the left mouse button is pressed
     isLeftMouseButtonPressed = true;
   }
+});
+
+container.addEventListener("mouseup", () => {
+  isLeftMouseButtonPressed = false;
 });
 
 // buttons event listeners
@@ -103,10 +109,6 @@ clearAllButton.addEventListener("click", () => {
   squares.forEach((square) => {
     square.style.backgroundColor = originalBackgroundColor;
   });
-});
-
-document.addEventListener("mouseup", () => {
-  isLeftMouseButtonPressed = false;
 });
 
 function getRandomColor() {
