@@ -131,3 +131,4 @@ function addBlackToColor(color) {
 
   return `rgb(${newRed}, ${newGreen}, ${newBlue})`;
 }
+
