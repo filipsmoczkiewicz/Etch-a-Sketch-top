@@ -16,8 +16,23 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin-bottom: 10px;
 }
 
+.borderContainer {
+  border: 5px solid black;
+  padding: 32px; 
+  width: 600px; 
+  margin: 0 auto;
+}
+
+.contLeftSide,
+.contRightSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
