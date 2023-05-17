@@ -6,8 +6,10 @@
 }
 
 .borderContainer {
-  border: 2px solid black;
-  padding: 10px;
+  border: 2px solid blue;
+  padding: 20px;
+  width: fit-content;
+  margin: auto;
 }
 
 .container {
@@ -15,11 +17,19 @@
   flex-wrap: wrap;
   width: 480px;
   height: 480px;
-  border: 1px solid black;
+  border: 1px solid green;
   margin: auto;
-  box-sizing: content-box; /* Add this line */
+  box-sizing: content-box;
 }
 
+/*
+.grid-container {
+  display: flex;
+  justify-content: center;
+}
+*/
+
+/* squares inside the grid */
 .square {
   width: 30px;
   height: 30px;
@@ -27,18 +37,11 @@
   box-sizing: border-box;
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
 .controls-container {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  border: 2px solid red; 
 }
 
 .controls-wrapper {
@@ -60,5 +63,13 @@
   font-size: 16px;
   font-weight: bold;
   padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-bottom: 10px;
 }
