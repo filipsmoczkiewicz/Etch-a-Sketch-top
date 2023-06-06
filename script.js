@@ -4,7 +4,7 @@ const blackButton = document.querySelector("#black");
 const rainbowButton = document.querySelector("#colorful");
 const eraserButton = document.querySelector("#eraser");
 const clearAllButton = document.querySelector("#clear-all");
-const colorPicker = document.querySelector("#color-picker");
+const colorPickerButton = document.querySelector("#color-picker-button");
 
 let colorMode = "black"; // Default color mode
 let isLeftMouseButtonPressed = false;
@@ -34,7 +34,7 @@ function createGrid(numSquares) {
       // add event listener to change color on mouseover
       square.addEventListener("mouseover", () => {
         if (isLeftMouseButtonPressed) {
-          const currentColor = square.style.backgroundColor; // Add this line
+          const currentColor = square.style.backgroundColor;
           if (colorMode === "black") {
             square.style.backgroundColor = "black";
           } else if (colorMode === "rainbow") {
@@ -46,11 +46,10 @@ function createGrid(numSquares) {
           } else if (colorMode === "eraser") {
             square.style.backgroundColor = originalBackgroundColor;
           } else if (colorMode === "custom") {
-            square.style.backgroundColor = colorPicker.value;
+            square.style.backgroundColor = colorPickerButton.style.backgroundColor;
           }
         }
       });
-      
     }
   }
 }
@@ -90,8 +89,29 @@ blackButton.addEventListener("click", () => {
   colorMode = "black";
 });
 
-colorPicker.addEventListener("input", () => {
-  colorMode = "custom";
+colorPickerButton.addEventListener("click", () => {
+  const colorPicker = document.querySelector("#custom-color-picker");
+  if (colorPicker) {
+    colorPicker.remove();
+  } else {
+    const customColorPicker = document.createElement("input");
+    customColorPicker.type = "color";
+    customColorPicker.id = "custom-color-picker";
+    customColorPicker.style.position = "absolute";
+    customColorPicker.style.zIndex = "9999";
+
+    customColorPicker.addEventListener("input", () => {
+      colorPickerButton.style.backgroundColor = customColorPicker.value;
+      colorMode = "custom";
+    });
+
+    customColorPicker.addEventListener("change", () => {
+      colorPickerButton.style.backgroundColor = customColorPicker.value;
+      customColorPicker.remove();
+    });
+
+    colorPickerButton.appendChild(customColorPicker);
+  }
 });
 
 rainbowButton.addEventListener("click", () => {
@@ -131,4 +151,3 @@ function addBlackToColor(color) {
 
   return `rgb(${newRed}, ${newGreen}, ${newBlue})`;
 }
-
